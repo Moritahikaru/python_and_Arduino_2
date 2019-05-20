@@ -18,10 +18,13 @@ class Ser:
         ser=self.ser
         ser.write('a'.encode('ascii')) # arduinoへ開始の合図を送る。
         data=v.get() # vの文字列は、v.get()で取り出す。
-        ser.write(data.encode('ascii'))
-        ser.flush() # バッファ内の待ちデータを送りきる。
-        print("sent: "+data)
-        time.sleep(1) # send直後にreceiveしようとすると、timeoutになるので。
+        if data.isdecimal()==True:            
+            ser.write(data.encode('ascii'))
+            ser.flush() # バッファ内の待ちデータを送りきる。
+            print("sent: "+data)
+            time.sleep(1) # send直後にreceiveしようとすると、timeoutになるので。
+        else:
+            v.set('')
     def receive_com(self):
         ser=self.ser
         ser.write('b'.encode('ascii')) # arduinoへ開始の合図を送る。

@@ -29,8 +29,8 @@
 - Arduinoとのシリアル通信を開始（ボタン"connect"）。
 - Arduinoへデータ（そのときにエントリーに入力されているテキスト）を送信（ボタン"send"、合図は'a'）。送信内容をprint
 - Arduinoからデータを受信（ボタン"receive"、合図は'b'）。受信内容をprint
-- Arduinoへ送るためのデータを入力するエントリー。
+- Arduinoへ送るためのデータを入力するエントリー。isdecimalを使って、0-9の文字だけを送る。
 
 ## Arduino側
 
-test_serialと同じ。
+test_serialと同じ。ただし、受け取った文字列をintに変換する。
